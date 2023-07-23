@@ -22,10 +22,14 @@ limitations under the License.
 // Input: standard order
 // output: scrambled order
 
+// Optimised by Lokesh Maji and Aman Prajapati
+// IIIT Bangalore
+// July 2023
+
 // --- Baseline Version
 // * address bit-lengts are set according to worst-case
 // * supports up-to 2^15-pt NTT/INTT
-// * integer multiplier is not optimized
+// * integer multiplier is optimized
 // * modular reduction is not optimized
 // * wait state is not optimized
 
