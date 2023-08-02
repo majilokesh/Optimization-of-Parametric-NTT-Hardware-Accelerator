@@ -26,28 +26,12 @@ always @* begin
 	end
 end
 
-always @* begin
-	for(j = 0; j < wI_pt; j = j+1) begin
-		Xreg_e <= Xreg_e + (X_even[j] << 2*j);
-		Xreg_o <= Xreg_o + (X_odd[j] << 2*j+1);
-		Yreg_e <= Yreg_e + (Y_even[j] << 2*j);
-		Yreg_o <= Yreg_o + (Y_odd[j] << 2*j+1);
-	end
-end
-
-assign X_e = Xreg_e;
-assign X_o = Xreg_o;
-assign Y_e = Yreg_e;
-assign Y_o = Yreg_o;
-
 wire [31 : 0] ac,bc,ad,bd;
-wire [63 : 0] t1,t2;
-wire [48 : 0] psum;
 
-ka_16x16 i1(.a(X_o),.b(Y_o),.out(ac));
-ka_16x16 i2(.a(X_e),.b(Y_o),.out(bc));
-ka_16x16 i3(.a(X_o),.b(Y_e),.out(ad));
-ka_16x16 i4(.a(X_e),.b(Y_e),.out(bd));
+ka_16x16 i1(.a(X_odd),.b(Y_odd),.out(ac));
+ka_16x16 i2(.a(X_even),.b(Y_odd),.out(bc));
+ka_16x16 i3(.a(X_odd),.b(Y_even),.out(ad));
+ka_16x16 i4(.a(X_even),.b(Y_even),.out(bd));
 
 reg [63:0] t1, t2,t3,t4;
 
