@@ -30,7 +30,7 @@ limitations under the License.
 // * address bit-lengts are set according to worst-case
 // * supports up-to 2^15-pt NTT/INTT
 // * integer multiplier is optimized
-// * modular reduction is not optimized
+// * modular reduction is optimized
 // * wait state is not optimized
 
 module NTTN   (input                           clk,reset,
