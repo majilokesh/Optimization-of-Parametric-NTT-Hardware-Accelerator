@@ -25,7 +25,7 @@
 
 
 //`timescale 1ns/ 100 ps
-module Booth_mult #(parameter N= 18)		// parametrizable data width N
+module Booth_mult #(parameter N= 32)		// parametrizable data width N
 		(
 		output 	reg 	[2*N-1 : 0]	product,			// outputs
 		output 	reg								done,
