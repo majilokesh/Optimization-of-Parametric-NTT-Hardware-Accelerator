@@ -3,9 +3,9 @@ parameter wI = 32,
 parameter wO = 2 * wI
 )
 (
-input   [wI-1:0]    iX,
-input   [wI-1:0]    iY,
-output  [wO-1:0]    oO
+input [wI-1:0]    iX,
+input [wI-1:0]    iY,
+output [wO-1:0]    oO
 );
 
 localparam wI_pt = wI / 2;
@@ -26,10 +26,11 @@ ka_16x16 i3(.a(X_hi),.b(Y_lo),.out(ad));
 ka_16x16 i4(.a(X_lo),.b(Y_lo),.out(bd));
 
 assign t2 = bd;
-assign psum = {bc+ad,16'b0};
+assign psum = (bc+ad) << 16;
 assign t1 = {ac,32'b0};
 
 assign oO = t1 + psum + t2;
+
 
 endmodule
 
@@ -48,7 +49,7 @@ module ka_16x16(
   ka_8x8 i3(.a(a[15:8]),.b(b[7:0]),.out(ad));
   ka_8x8 i4(.a(a[7:0]),.b(b[7:0]),.out(bd));
   assign t2= bd;
-  assign psum = {bc+ad,8'b00000000};
+  assign psum = (bc+ad) << 8;
   assign t1={ac,16'b0000000000000000};
   assign out= t1+t2+psum;
 endmodule
@@ -68,7 +69,7 @@ module ka_8x8(
   ka_4x4 m3(.a(a[7:4]),.b(b[3:0]),.out(ad));
   ka_4x4 m4(.a(a[3:0]),.b(b[3:0]),.out(bd));
   assign t2= bd;
-  assign psum = {bc+ad,4'b0000};
+  assign psum = (bc+ad) << 4;
   assign t1={ac,8'b0000};
   assign out= t1+t2+psum;
 endmodule
@@ -87,7 +88,7 @@ module ka_4x4(
   ka_2x2 m3(.a(a[3:2]),.b(b[1:0]),.out(ad));
   ka_2x2 m4(.a(a[1:0]),.b(b[1:0]),.out(bd));
   assign t2= bd;
-  assign psum = {bc+ad,2'b00};
+  assign psum = (bc+ad) << 2;
   assign t1={ac,4'b0000};
   assign out= t1+t2+psum;
   
