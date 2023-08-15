@@ -16,8 +16,8 @@ Other End Arrival Time         -0.022
 - Setup                         0.147
 + Phase Shift                  10.000
 = Required Time                 9.831
-- Arrival Time                  9.696
-= Slack Time                    0.136
+- Arrival Time                  8.138
+= Slack Time                    1.693
      Clock Rise Edge                 0.000
      + Clock Network Latency (Prop)  0.024
      = Beginpoint Arrival Time       0.024
