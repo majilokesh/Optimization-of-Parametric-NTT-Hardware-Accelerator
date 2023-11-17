@@ -1,3 +1,7 @@
+//Author: Lokesh Maji
+//Date: 03.07.2023
+//Organisation: IIIT Bangalore
+
 module ka #(
 parameter wI = 32,
 parameter wO = 2 * wI
